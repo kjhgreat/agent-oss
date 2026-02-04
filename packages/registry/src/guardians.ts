@@ -1,5 +1,5 @@
 /**
- * @agent-oss/registry - Guardian Operations
+ * @antfarm/registry - Guardian Operations
  * Operations for managing agent guardians
  */
 

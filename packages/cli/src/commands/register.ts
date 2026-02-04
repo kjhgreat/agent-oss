@@ -3,7 +3,7 @@
  */
 
 import { readFile } from 'node:fs/promises';
-import { RegistryClient } from '@agent-oss/registry';
+import { RegistryClient } from '@antfarm/registry';
 import { Command } from 'commander';
 import ora from 'ora';
 import { loadConfig, resolvePath } from '../config.js';
@@ -21,22 +21,22 @@ export function createRegisterCommand(): Command {
         // Validate config
         if (!config.did) {
           spinner.fail('No DID configured');
-          exitWithError('Run "agent-oss init" first');
+          exitWithError('Run "antfarm init" first');
         }
 
         if (!config.guardianGithubId) {
           spinner.fail('No guardian configured');
-          exitWithError('Run "agent-oss init" first');
+          exitWithError('Run "antfarm init" first');
         }
 
         if (!config.privateKeyPath || !config.publicKeyPath) {
           spinner.fail('No keys configured');
-          exitWithError('Run "agent-oss init" first');
+          exitWithError('Run "antfarm init" first');
         }
 
         if (!config.registryUrl) {
           spinner.fail('No registry URL configured');
-          exitWithError('Run "agent-oss init" first');
+          exitWithError('Run "antfarm init" first');
         }
 
         // Load public key
@@ -62,7 +62,7 @@ export function createRegisterCommand(): Command {
 
         // Create DID document
         spinner.text = 'Creating DID document...';
-        const { createDIDDocument } = await import('@agent-oss/did');
+        const { createDIDDocument } = await import('@antfarm/did');
         const didParts = config.did.split(':');
         const domain = didParts[2];
         const path = didParts.slice(3).join(':');

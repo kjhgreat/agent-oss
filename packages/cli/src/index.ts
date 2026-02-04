@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * @agent-oss/cli
+ * @antfarm/cli
  *
- * Command-line interface for Agent OSS identity and verification system.
+ * Command-line interface for Antfarm identity and verification system.
  */
 
 import { Command } from 'commander';
@@ -18,8 +18,8 @@ import { createVerifyCommand } from './commands/verify.js';
 const program = new Command();
 
 program
-  .name('agent-oss')
-  .description('Agent OSS - Decentralized agent identity and verification')
+  .name('antfarm')
+  .description('Antfarm - Decentralized agent identity and verification')
   .version('0.1.0');
 
 // Add commands

@@ -1,5 +1,5 @@
 /**
- * @agent-oss/cli - Comprehensive Test Suite
+ * @antfarm/cli - Comprehensive Test Suite
  */
 
 import { existsSync } from 'node:fs';
@@ -9,11 +9,11 @@ import { join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 // Test config directory
-const TEST_CONFIG_DIR = join(homedir(), '.agent-oss-test');
+const TEST_CONFIG_DIR = join(homedir(), '.antfarm-test');
 const TEST_CONFIG_FILE = join(TEST_CONFIG_DIR, 'config.json');
 const TEST_KEYS_DIR = join(TEST_CONFIG_DIR, 'keys');
 
-describe('@agent-oss/cli - Basic Module Tests', () => {
+describe('@antfarm/cli - Basic Module Tests', () => {
   it('should have a valid package structure', () => {
     expect(true).toBe(true);
   });
@@ -33,7 +33,7 @@ describe('@agent-oss/cli - Basic Module Tests', () => {
   });
 });
 
-describe('@agent-oss/cli - Config Module', () => {
+describe('@antfarm/cli - Config Module', () => {
   let config: typeof import('../config.js');
 
   beforeEach(async () => {
@@ -90,7 +90,7 @@ describe('@agent-oss/cli - Config Module', () => {
         did: 'did:web:example.com:agent',
         privateKeyPath: '/path/to/private.key',
         publicKeyPath: '/path/to/public.key',
-        registryUrl: 'https://api.agent-oss.dev',
+        registryUrl: 'https://api.antfarm.dev',
       };
 
       await mkdir(TEST_CONFIG_DIR, { recursive: true });
@@ -150,7 +150,7 @@ describe('@agent-oss/cli - Config Module', () => {
   });
 });
 
-describe('@agent-oss/cli - Utils Module', () => {
+describe('@antfarm/cli - Utils Module', () => {
   let utils: typeof import('../utils.js');
 
   beforeEach(async () => {
@@ -266,7 +266,7 @@ describe('@agent-oss/cli - Utils Module', () => {
   });
 });
 
-describe('@agent-oss/cli - Command Integration Tests', () => {
+describe('@antfarm/cli - Command Integration Tests', () => {
   describe('init command', () => {
     it('should require domain, agentId, and githubId', () => {
       // This would be tested with actual command execution
@@ -391,7 +391,7 @@ describe('@agent-oss/cli - Command Integration Tests', () => {
   });
 });
 
-describe('@agent-oss/cli - Error Handling', () => {
+describe('@antfarm/cli - Error Handling', () => {
   it('should handle missing dependencies gracefully', () => {
     // Test error handling for missing packages
     expect(true).toBe(true);

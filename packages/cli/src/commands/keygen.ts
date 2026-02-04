@@ -4,7 +4,7 @@
 
 import { chmod, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { exportPrivateKey, exportPublicKey, generateKeyPair } from '@agent-oss/crypto';
+import { exportPrivateKey, exportPublicKey, generateKeyPair } from '@antfarm/crypto';
 import { Command } from 'commander';
 import ora from 'ora';
 import { ensureConfigDir, getKeysDir } from '../config.js';

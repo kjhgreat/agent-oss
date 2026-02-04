@@ -1,9 +1,9 @@
 /**
- * @agent-oss/registry - Verification Operations
+ * @antfarm/registry - Verification Operations
  * Operations for verifying agent signatures and status
  */
 
-import { verifyRequest } from '@agent-oss/crypto';
+import { verifyRequest } from '@antfarm/crypto';
 import { sha256 } from '@noble/hashes/sha256';
 import { bytesToHex } from '@noble/hashes/utils';
 import type { SupabaseClient } from '@supabase/supabase-js';

@@ -1,5 +1,5 @@
 /**
- * @agent-oss/registry - Registry Client
+ * @antfarm/registry - Registry Client
  * Main client class for interacting with the agent registry
  */
 

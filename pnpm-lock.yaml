@@ -20,13 +20,13 @@ importers:
 
   packages/cli:
     dependencies:
-      '@agent-oss/crypto':
+      '@antfarm/crypto':
         specifier: workspace:*
         version: link:../crypto
-      '@agent-oss/did':
+      '@antfarm/did':
         specifier: workspace:*
         version: link:../did
-      '@agent-oss/registry':
+      '@antfarm/registry':
         specifier: workspace:*
         version: link:../registry
       chalk:
@@ -70,7 +70,7 @@ importers:
 
   packages/did:
     dependencies:
-      '@agent-oss/crypto':
+      '@antfarm/crypto':
         specifier: workspace:*
         version: link:../crypto
     devDependencies:
@@ -86,10 +86,10 @@ importers:
 
   packages/registry:
     dependencies:
-      '@agent-oss/crypto':
+      '@antfarm/crypto':
         specifier: workspace:*
         version: link:../crypto
-      '@agent-oss/did':
+      '@antfarm/did':
         specifier: workspace:*
         version: link:../did
       '@noble/hashes':

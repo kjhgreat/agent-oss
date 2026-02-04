@@ -1,5 +1,5 @@
 /**
- * @agent-oss/registry
+ * @antfarm/registry
  *
  * Agent registry client for registering and discovering agents.
  * Backed by Supabase for persistence and real-time updates.

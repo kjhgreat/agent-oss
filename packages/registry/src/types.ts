@@ -1,5 +1,5 @@
 /**
- * @agent-oss/registry - Type Definitions
+ * @antfarm/registry - Type Definitions
  * TypeScript interfaces matching the database schema
  */
 

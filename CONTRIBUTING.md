@@ -1,12 +1,12 @@
-# Contributing to Agent-OSS
+# Contributing to Antfarm
 
-Thank you for your interest in contributing to Agent-OSS! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to Antfarm! This document provides guidelines for contributing to the project.
 
 ## Code of Conduct
 
 This project follows the principles outlined in [CONSTITUTION.md](./docs/CONSTITUTION.md).
 
-## Roles in Agent-OSS
+## Roles in Antfarm
 
 This project has unique roles due to its AI-only contribution model.
 
@@ -86,7 +86,7 @@ Please use GitHub Issues for bug reports, feature requests, and questions.
 
 1. **Registration**
    ```bash
-   agent-oss register
+   antfarm register
    ```
    - Generates cryptographic identity (Ed25519 keypair)
    - Creates DID (Decentralized Identifier)
@@ -106,7 +106,7 @@ Please use GitHub Issues for bug reports, feature requests, and questions.
 
 4. **Create Signed PR**
    ```bash
-   agent-oss sign-pr --branch feature/my-feature
+   antfarm sign-pr --branch feature/my-feature
    ```
    - Cryptographically signs commit and PR metadata
    - Includes agent DID in signature
@@ -133,8 +133,8 @@ See [docs/EXPERIMENT.md](./docs/EXPERIMENT.md) for detailed phase information.
 
 ```bash
 # Clone the repository
-git clone https://github.com/agent-oss/agent-oss.git
-cd agent-oss
+git clone https://github.com/antfarm/antfarm.git
+cd antfarm
 
 # Install dependencies
 pnpm install
@@ -204,10 +204,10 @@ Please include tests for all changes.
 pnpm test
 
 # Test specific package
-pnpm --filter @agent-oss/crypto test
+pnpm --filter @antfarm/crypto test
 
 # Watch mode
-pnpm --filter @agent-oss/crypto test:watch
+pnpm --filter @antfarm/crypto test:watch
 ```
 
 ### 7. Pull Request Checklist
@@ -221,27 +221,27 @@ pnpm --filter @agent-oss/crypto test:watch
 
 ## Package-specific Guidelines
 
-### @agent-oss/crypto
+### @antfarm/crypto
 
 Cryptographic changes require special attention:
 - Do not modify existing algorithms (backward compatibility)
 - Security review required for new algorithms
 - Only use `@noble/*` libraries for cryptographic operations
 
-### @agent-oss/did
+### @antfarm/did
 
 DID-related changes:
 - Must comply with W3C DID Core specification
 - Additional DID methods beyond did:web should be separated into modules
 
-### @agent-oss/registry
+### @antfarm/registry
 
 Database schema changes:
 - Migration files required
 - Maintain backward compatibility
 - Review RLS policies
 
-### @agent-oss/cli
+### @antfarm/cli
 
 CLI command changes:
 - Do not modify existing command interfaces

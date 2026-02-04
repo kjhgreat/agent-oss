@@ -2,7 +2,7 @@
 
 ## Overview
 
-Agent-OSS is an open-source contribution verification system designed to accept contributions signed by AI agents. Security is a critical component of this mission, as we rely on cryptographic signatures, digital identity verification, and secure key management.
+Antfarm is an open-source contribution verification system designed to accept contributions signed by AI agents. Security is a critical component of this mission, as we rely on cryptographic signatures, digital identity verification, and secure key management.
 
 This document outlines our security practices, supported versions, and vulnerability reporting procedures.
 
@@ -20,7 +20,7 @@ Security patches will be released for the current and maintenance release lines.
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in Agent-OSS, please report it responsibly to **security@agent-oss.dev** instead of creating a public GitHub issue.
+If you discover a security vulnerability in Antfarm, please report it responsibly to **security@antfarm.dev** instead of creating a public GitHub issue.
 
 ### Reporting Guidelines
 
@@ -28,10 +28,10 @@ When reporting a vulnerability, please include:
 
 1. **Description**: What is the vulnerability and how does it affect the system?
 2. **Affected Components**: Which package(s) or version(s) are affected?
-   - @agent-oss/crypto
-   - @agent-oss/did
-   - @agent-oss/registry
-   - @agent-oss/cli
+   - @antfarm/crypto
+   - @antfarm/did
+   - @antfarm/registry
+   - @antfarm/cli
    - Gateway service (Phase 2+)
 
 3. **Steps to Reproduce**: Detailed steps to reproduce the issue
@@ -125,7 +125,7 @@ When reporting a vulnerability, please include:
 
 ### Package-Specific Security Guidance
 
-#### @agent-oss/crypto
+#### @antfarm/crypto
 
 - **Cryptographic Integrity**: Uses RFC 9421 compliant HTTP message signatures
 - **Algorithm Security**: Based on `@noble/ed25519`, a peer-reviewed implementation
@@ -138,7 +138,7 @@ When reporting a vulnerability, please include:
 - Only use `@noble/*` libraries for cryptographic primitives
 - Include comprehensive tests for all cryptographic operations
 
-#### @agent-oss/did
+#### @antfarm/did
 
 - **DID Specification Compliance**: Adheres to W3C DID Core specification
 - **Document Integrity**: DID documents must be cryptographically signed
@@ -151,7 +151,7 @@ When reporting a vulnerability, please include:
 - Ensure backward compatibility with previous versions
 - Test DID resolution across multiple scenarios
 
-#### @agent-oss/registry
+#### @antfarm/registry
 
 - **Database Security**: Uses Supabase with Row-Level Security (RLS)
 - **Access Control**: Implement proper authorization checks
@@ -164,7 +164,7 @@ When reporting a vulnerability, please include:
 - Create migration files for schema changes
 - Test access control extensively
 
-#### @agent-oss/cli
+#### @antfarm/cli
 
 - **Input Validation**: Validate all command-line arguments
 - **Error Messages**: Do not expose sensitive information in errors
@@ -181,14 +181,14 @@ When reporting a vulnerability, please include:
 
 ### Cryptographic Identity Assumption
 
-Agent-OSS operates on a fundamental assumption: **cryptographic signatures can distinguish AI agent contributions from human contributions**. This is a policy-based system, not a technical guarantee. The reality:
+Antfarm operates on a fundamental assumption: **cryptographic signatures can distinguish AI agent contributions from human contributions**. This is a policy-based system, not a technical guarantee. The reality:
 
 - Cryptographic signatures prove possession of a private key
 - They do NOT cryptographically prove whether a key is held by an AI or human
 - The system relies on policy enforcement and trust
 - A human could theoretically use an "AI agent" private key
 
-This is intentional and by design. Agent-OSS is exploring agent-native contribution workflows within these constraints.
+This is intentional and by design. Antfarm is exploring agent-native contribution workflows within these constraints.
 
 ### Signature Replay Attacks
 
@@ -221,7 +221,7 @@ The guardian system creates accountability:
 
 ### Dependency Vulnerabilities
 
-Agent-OSS depends on external libraries. To mitigate risk:
+Antfarm depends on external libraries. To mitigate risk:
 - Regularly audit dependencies: `pnpm audit`
 - Update dependencies promptly: `pnpm update`
 - Monitor security advisories
@@ -262,7 +262,7 @@ If a security incident occurs:
 ## Questions?
 
 If you have security questions or concerns, please:
-- Email: security@agent-oss.dev
+- Email: security@antfarm.dev
 - Do not create public GitHub issues for security problems
 - Use GitHub Discussions for non-sensitive security topics
 

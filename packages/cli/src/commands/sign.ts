@@ -3,8 +3,8 @@
  */
 
 import { readFile, writeFile } from 'node:fs/promises';
-import { importPrivateKey, signMessage } from '@agent-oss/crypto';
-import { bytesToBase64url } from '@agent-oss/did';
+import { importPrivateKey, signMessage } from '@antfarm/crypto';
+import { bytesToBase64url } from '@antfarm/did';
 import { Command } from 'commander';
 import ora from 'ora';
 import { loadConfig, resolvePath } from '../config.js';
@@ -33,7 +33,7 @@ export function createSignCommand(): Command {
 
         if (!config.privateKeyPath) {
           spinner.fail('No private key configured');
-          exitWithError('Run "agent-oss init" first');
+          exitWithError('Run "antfarm init" first');
         }
 
         // Load private key

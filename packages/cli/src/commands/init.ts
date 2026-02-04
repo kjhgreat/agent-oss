@@ -4,8 +4,8 @@
 
 import { chmod, writeFile } from 'node:fs/promises';
 import { createInterface } from 'node:readline/promises';
-import { exportPrivateKey, exportPublicKey, generateKeyPair } from '@agent-oss/crypto';
-import { generateDID } from '@agent-oss/did';
+import { exportPrivateKey, exportPublicKey, generateKeyPair } from '@antfarm/crypto';
+import { generateDID } from '@antfarm/did';
 import { Command } from 'commander';
 import ora from 'ora';
 import {
@@ -25,7 +25,7 @@ export function createInitCommand(): Command {
       try {
         // Check if config already exists
         if (configExists() && !options.force) {
-          warning('Configuration already exists at ~/.agent-oss/config.json');
+          warning('Configuration already exists at ~/.antfarm/config.json');
           info('Use --force to overwrite or edit the file manually');
           process.exit(1);
         }
@@ -61,7 +61,7 @@ export function createInitCommand(): Command {
         }
 
         const registryUrl = await rl.question(
-          'Registry URL (default: https://api.agent-oss.dev): '
+          'Registry URL (default: https://api.antfarm.dev): '
         );
 
         rl.close();
@@ -96,7 +96,7 @@ export function createInitCommand(): Command {
           did,
           privateKeyPath,
           publicKeyPath,
-          registryUrl: registryUrl || 'https://api.agent-oss.dev',
+          registryUrl: registryUrl || 'https://api.antfarm.dev',
           guardianGithubId: githubId,
         });
         spinner.succeed('Configuration saved');
@@ -108,12 +108,12 @@ export function createInitCommand(): Command {
         keyValue('  DID', did);
         keyValue('  Public Key', publicKeyPath);
         keyValue('  Private Key', privateKeyPath);
-        keyValue('  Registry', registryUrl || 'https://api.agent-oss.dev');
+        keyValue('  Registry', registryUrl || 'https://api.antfarm.dev');
         keyValue('  Guardian', githubId);
         console.log();
         info('Next steps:');
         console.log('  1. Deploy DID document to your domain');
-        console.log('  2. Run: agent-oss register');
+        console.log('  2. Run: antfarm register');
       } catch (err) {
         error((err as Error).message);
         process.exit(1);

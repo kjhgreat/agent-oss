@@ -1,5 +1,5 @@
 /**
- * @agent-oss/crypto
+ * @antfarm/crypto
  *
  * Cryptographic primitives for agent identity and verification.
  * Built on @noble/ed25519 and @noble/hashes for audited, secure implementations.

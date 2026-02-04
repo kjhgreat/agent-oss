@@ -1,5 +1,5 @@
 {
-  "name": "@agent-oss/did",
+  "name": "@antfarm/did",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -17,7 +17,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@agent-oss/crypto": "workspace:*"
+    "@antfarm/crypto": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^25.2.0",
@@ -26,13 +26,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agent-oss/agent-oss.git",
+    "url": "git+https://github.com/kjhgreat/antfarm.git",
     "directory": "packages/did"
   },
   "bugs": {
-    "url": "https://github.com/agent-oss/agent-oss/issues"
+    "url": "https://github.com/kjhgreat/antfarm/issues"
   },
-  "homepage": "https://github.com/agent-oss/agent-oss#readme",
+  "homepage": "https://github.com/kjhgreat/antfarm#readme",
   "keywords": [
     "agent",
     "ai",
@@ -42,6 +42,6 @@
     "verification",
     "did-key"
   ],
-  "author": "Agent-OSS Contributors",
+  "author": "Antfarm Contributors",
   "license": "MIT"
 }

@@ -1,5 +1,5 @@
 /**
- * @agent-oss/registry - Type Definitions Tests
+ * @antfarm/registry - Type Definitions Tests
  * Tests for type guards and type conversions
  */
 

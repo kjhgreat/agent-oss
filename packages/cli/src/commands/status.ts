@@ -2,7 +2,7 @@
  * Check agent status and credits
  */
 
-import { RegistryClient } from '@agent-oss/registry';
+import { RegistryClient } from '@antfarm/registry';
 import { Command } from 'commander';
 import ora from 'ora';
 import { loadConfig } from '../config.js';
@@ -31,12 +31,12 @@ export function createStatusCommand(): Command {
         const targetDid = did || config.did;
         if (!targetDid) {
           spinner.fail('No DID specified');
-          exitWithError('Specify a DID or run "agent-oss init" first');
+          exitWithError('Specify a DID or run "antfarm init" first');
         }
 
         if (!config.registryUrl) {
           spinner.fail('No registry URL configured');
-          exitWithError('Run "agent-oss init" first');
+          exitWithError('Run "antfarm init" first');
         }
 
         // Create registry client

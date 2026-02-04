@@ -1,16 +1,16 @@
 # Technical Documentation
 
-This document provides detailed technical information about the Agent-OSS architecture, packages, standards compliance, and development processes.
+This document provides detailed technical information about the Antfarm architecture, packages, standards compliance, and development processes.
 
 ## Table of Contents
 
 - [Architecture Overview](#architecture-overview)
 - [Verification Flow](#verification-flow)
 - [Packages](#packages)
-  - [@agent-oss/crypto](#agent-osscrypto)
-  - [@agent-oss/did](#agent-ossdid)
-  - [@agent-oss/registry](#agent-ossregistry)
-  - [@agent-oss/cli](#agent-osscli)
+  - [@antfarm/crypto](#antfarmcrypto)
+  - [@antfarm/did](#antfarmdid)
+  - [@antfarm/registry](#antfarmregistry)
+  - [@antfarm/cli](#antfarmcli)
 - [Standards Compliance](#standards-compliance)
 - [Development](#development)
   - [Project Structure](#project-structure)
@@ -23,7 +23,7 @@ This document provides detailed technical information about the Agent-OSS archit
 
 ## Architecture Overview
 
-The Agent-OSS system implements a cryptographic verification pipeline for AI agent contributions. The architecture follows a multi-layered approach where GitHub webhooks trigger signature verification, DID resolution, and trust evaluation.
+The Antfarm system implements a cryptographic verification pipeline for AI agent contributions. The architecture follows a multi-layered approach where GitHub webhooks trigger signature verification, DID resolution, and trust evaluation.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -121,14 +121,14 @@ After cryptographic verification, the gateway evaluates:
 
 ## Packages
 
-### @agent-oss/crypto
+### @antfarm/crypto
 
 Cryptographic primitives for Ed25519 signing and verification.
 
 #### Installation
 
 ```bash
-npm install @agent-oss/crypto
+npm install @antfarm/crypto
 ```
 
 #### API
@@ -136,7 +136,7 @@ npm install @agent-oss/crypto
 **Key Generation**
 
 ```typescript
-import { generateKeyPair, exportPublicKey, exportPrivateKey } from '@agent-oss/crypto';
+import { generateKeyPair, exportPublicKey, exportPrivateKey } from '@antfarm/crypto';
 
 const keyPair = await generateKeyPair();
 const publicKeyHex = exportPublicKey(keyPair.publicKey);
@@ -146,7 +146,7 @@ const privateKeyHex = exportPrivateKey(keyPair.privateKey);
 **HTTP Request Signing (RFC 9421)**
 
 ```typescript
-import { signRequest } from '@agent-oss/crypto';
+import { signRequest } from '@antfarm/crypto';
 
 const signedHeaders = await signRequest(
   {
@@ -166,7 +166,7 @@ const signedHeaders = await signRequest(
 **Signature Verification**
 
 ```typescript
-import { verifyRequest } from '@agent-oss/crypto';
+import { verifyRequest } from '@antfarm/crypto';
 
 const isValid = await verifyRequest(
   {
@@ -195,19 +195,19 @@ const isValid = await verifyRequest(
 
 ---
 
-### @agent-oss/did
+### @antfarm/did
 
 DID document generation and resolution for agent identities.
 
 #### Installation
 
 ```bash
-npm install @agent-oss/did
+npm install @antfarm/did
 ```
 
 #### DID Structure
 
-Agent-OSS uses the `did:web` method:
+Antfarm uses the `did:web` method:
 
 ```
 did:web:agent.example.com:agents:my-agent
@@ -223,7 +223,7 @@ https://agent.example.com/agents/my-agent/did.json
 **Generate DID**
 
 ```typescript
-import { generateDID } from '@agent-oss/did';
+import { generateDID } from '@antfarm/did';
 
 const did = generateDID('agent.example.com', 'agents/my-agent');
 // Returns: "did:web:agent.example.com:agents:my-agent"
@@ -232,7 +232,7 @@ const did = generateDID('agent.example.com', 'agents/my-agent');
 **Create DID Document**
 
 ```typescript
-import { createDIDDocument, exportPublicKey } from '@agent-oss/crypto';
+import { createDIDDocument, exportPublicKey } from '@antfarm/crypto';
 
 const didDocument = createDIDDocument({
   domain: 'agent.example.com',
@@ -266,7 +266,7 @@ const didDocument = createDIDDocument({
 **Resolve DID**
 
 ```typescript
-import { resolveDID } from '@agent-oss/did';
+import { resolveDID } from '@antfarm/did';
 
 const didDocument = await resolveDID('did:web:agent.example.com:agents:my-agent');
 // Fetches from https://agent.example.com/agents/my-agent/did.json
@@ -282,14 +282,14 @@ To host your DID document:
 
 ---
 
-### @agent-oss/registry
+### @antfarm/registry
 
 Supabase-based registry client for agent metadata and trust scores.
 
 #### Installation
 
 ```bash
-npm install @agent-oss/registry
+npm install @antfarm/registry
 ```
 
 #### Schema
@@ -330,7 +330,7 @@ npm install @agent-oss/registry
 **Register Agent**
 
 ```typescript
-import { createRegistryClient } from '@agent-oss/registry';
+import { createRegistryClient } from '@antfarm/registry';
 
 const registry = createRegistryClient({
   supabaseUrl: process.env.SUPABASE_URL,
@@ -371,14 +371,14 @@ Supabase RLS policies enforce:
 
 ---
 
-### @agent-oss/cli
+### @antfarm/cli
 
 Command-line interface for agent identity management.
 
 #### Installation
 
 ```bash
-npm install -g @agent-oss/cli
+npm install -g @antfarm/cli
 ```
 
 #### Commands
@@ -386,56 +386,56 @@ npm install -g @agent-oss/cli
 **Initialize Agent**
 
 ```bash
-agent-oss init
-# Creates ~/.agent-oss/config.json
+antfarm init
+# Creates ~/.antfarm/config.json
 ```
 
 **Generate Keypair**
 
 ```bash
-agent-oss keygen
+antfarm keygen
 # Outputs:
 # Public key: 7a3f2e1b...
-# Private key saved to ~/.agent-oss/private.key
+# Private key saved to ~/.antfarm/private.key
 ```
 
 **Create DID Document**
 
 ```bash
-agent-oss did create --domain agent.example.com --path agents/my-agent
+antfarm did create --domain agent.example.com --path agents/my-agent
 # Outputs DID document JSON
 ```
 
 **Register with Registry**
 
 ```bash
-agent-oss register --guardian human@example.com
+antfarm register --guardian human@example.com
 # Registers agent with Supabase registry
 ```
 
 **Sign File**
 
 ```bash
-agent-oss sign ./contribution.patch
+antfarm sign ./contribution.patch
 # Outputs signature in RFC 9421 format
 ```
 
 **Verify Signature**
 
 ```bash
-agent-oss verify ./contribution.patch <signature> --did did:web:agent.example.com:agents:my-agent
+antfarm verify ./contribution.patch <signature> --did did:web:agent.example.com:agents:my-agent
 # Verifies signature against DID's public key
 ```
 
 #### Configuration
 
-Configuration is stored in `~/.agent-oss/config.json`:
+Configuration is stored in `~/.antfarm/config.json`:
 
 ```json
 {
   "did": "did:web:agent.example.com:agents:my-agent",
-  "privateKeyPath": "~/.agent-oss/private.key",
-  "registryUrl": "https://registry.agent-oss.dev",
+  "privateKeyPath": "~/.antfarm/private.key",
+  "registryUrl": "https://registry.antfarm.dev",
   "guardianEmail": "human@example.com"
 }
 ```
@@ -446,7 +446,7 @@ Configuration is stored in `~/.agent-oss/config.json`:
 
 ### RFC 9421: HTTP Message Signatures
 
-Agent-OSS implements RFC 9421 for HTTP request signing:
+Antfarm implements RFC 9421 for HTTP request signing:
 
 - **Signature Algorithm**: `ed25519`
 - **Covered Components**: `@method`, `@request-target`, `content-digest`, `content-type`
@@ -491,7 +491,7 @@ DID documents conform to W3C DID Core v1.0:
 ### Project Structure
 
 ```
-agent-oss/
+antfarm/
 ├── packages/
 │   ├── crypto/           # Cryptographic primitives
 │   │   ├── src/
@@ -556,10 +556,10 @@ pnpm build
 pnpm test
 
 # Specific package
-pnpm --filter @agent-oss/crypto test
+pnpm --filter @antfarm/crypto test
 
 # Watch mode
-pnpm --filter @agent-oss/crypto test:watch
+pnpm --filter @antfarm/crypto test:watch
 
 # Coverage
 pnpm test:coverage
@@ -585,7 +585,7 @@ pnpm typecheck
 pnpm dev
 
 # Specific package
-pnpm --filter @agent-oss/crypto dev
+pnpm --filter @antfarm/crypto dev
 ```
 
 ### Environment Variables
@@ -600,14 +600,14 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-key  # Server-side only
 
 # Agent Configuration
 AGENT_DID=did:web:agent.example.com:agents:my-agent
-AGENT_PRIVATE_KEY_PATH=~/.agent-oss/private.key
+AGENT_PRIVATE_KEY_PATH=~/.antfarm/private.key
 ```
 
 **Optional**
 
 ```bash
 # Registry
-REGISTRY_URL=https://registry.agent-oss.dev
+REGISTRY_URL=https://registry.antfarm.dev
 
 # GitHub (for Actions)
 GITHUB_TOKEN=ghp_...
@@ -637,10 +637,10 @@ cp .env.example .env
 
 ### Phase 1: Core Libraries ✅ (Completed)
 
-- [x] `@agent-oss/crypto`: Ed25519 signing/verification
-- [x] `@agent-oss/did`: DID document generation/resolution
-- [x] `@agent-oss/registry`: Supabase registry client
-- [x] `@agent-oss/cli`: Command-line tool
+- [x] `@antfarm/crypto`: Ed25519 signing/verification
+- [x] `@antfarm/did`: DID document generation/resolution
+- [x] `@antfarm/registry`: Supabase registry client
+- [x] `@antfarm/cli`: Command-line tool
 
 ### Phase 2: GitHub Integration (In Progress)
 
@@ -692,10 +692,10 @@ cp .env.example .env
 date -u  # Should be within 5 minutes of signature creation
 
 # Verify public key matches
-agent-oss did resolve <did> | jq '.verificationMethod[0].publicKeyMultibase'
+antfarm did resolve <did> | jq '.verificationMethod[0].publicKeyMultibase'
 
 # Enable debug logging
-DEBUG=agent-oss:* agent-oss verify ...
+DEBUG=antfarm:* antfarm verify ...
 ```
 
 #### DID Resolution Fails
@@ -742,7 +742,7 @@ SUPABASE_DEBUG=1 node your-script.js
 
 #### CLI Commands Not Found
 
-**Symptom**: `command not found: agent-oss`
+**Symptom**: `command not found: antfarm`
 
 **Possible Causes**:
 1. CLI not installed globally
@@ -751,13 +751,13 @@ SUPABASE_DEBUG=1 node your-script.js
 **Solutions**:
 ```bash
 # Install globally
-npm install -g @agent-oss/cli
+npm install -g @antfarm/cli
 
 # Add npm global bin to PATH
 export PATH="$PATH:$(npm config get prefix)/bin"
 
 # Or use pnpm
-pnpm add -g @agent-oss/cli
+pnpm add -g @antfarm/cli
 export PATH="$PATH:$(pnpm config get global-bin-dir)"
 ```
 
@@ -772,10 +772,10 @@ export PATH="$PATH:$(pnpm config get global-bin-dir)"
 **Solutions**:
 ```bash
 # Set restrictive permissions
-chmod 600 ~/.agent-oss/private.key
+chmod 600 ~/.antfarm/private.key
 
 # Verify ownership
-ls -l ~/.agent-oss/private.key
+ls -l ~/.antfarm/private.key
 # Should show: -rw------- 1 user group ...
 ```
 
@@ -784,15 +784,15 @@ ls -l ~/.agent-oss/private.key
 Enable debug logging for all packages:
 
 ```bash
-DEBUG=agent-oss:* agent-oss <command>
+DEBUG=antfarm:* antfarm <command>
 ```
 
 Package-specific debugging:
 
 ```bash
-DEBUG=agent-oss:crypto agent-oss sign file.txt
-DEBUG=agent-oss:did agent-oss did create
-DEBUG=agent-oss:registry agent-oss register
+DEBUG=antfarm:crypto antfarm sign file.txt
+DEBUG=antfarm:did antfarm did create
+DEBUG=antfarm:registry antfarm register
 ```
 
 ### Performance Issues

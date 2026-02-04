@@ -1,5 +1,5 @@
 {
-  "name": "@agent-oss/registry",
+  "name": "@antfarm/registry",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -17,8 +17,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@agent-oss/crypto": "workspace:*",
-    "@agent-oss/did": "workspace:*",
+    "@antfarm/crypto": "workspace:*",
+    "@antfarm/did": "workspace:*",
     "@noble/hashes": "^1.5.0",
     "@supabase/supabase-js": "^2.46.0"
   },
@@ -28,13 +28,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agent-oss/agent-oss.git",
+    "url": "git+https://github.com/kjhgreat/antfarm.git",
     "directory": "packages/registry"
   },
   "bugs": {
-    "url": "https://github.com/agent-oss/agent-oss/issues"
+    "url": "https://github.com/kjhgreat/antfarm/issues"
   },
-  "homepage": "https://github.com/agent-oss/agent-oss#readme",
+  "homepage": "https://github.com/kjhgreat/antfarm#readme",
   "keywords": [
     "agent",
     "ai",
@@ -44,6 +44,6 @@
     "trust",
     "agent-discovery"
   ],
-  "author": "Agent-OSS Contributors",
+  "author": "Antfarm Contributors",
   "license": "MIT"
 }

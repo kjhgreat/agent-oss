@@ -1,5 +1,5 @@
 /**
- * TypeScript type definitions for @agent-oss/crypto
+ * TypeScript type definitions for @antfarm/crypto
  */
 
 export interface KeyPair {

@@ -15,7 +15,7 @@ export interface AgentConfig {
   guardianGithubId?: string;
 }
 
-const CONFIG_DIR = join(homedir(), '.agent-oss');
+const CONFIG_DIR = join(homedir(), '.antfarm');
 const CONFIG_FILE = join(CONFIG_DIR, 'config.json');
 const KEYS_DIR = join(CONFIG_DIR, 'keys');
 

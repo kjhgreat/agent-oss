@@ -1,5 +1,5 @@
 /**
- * @agent-oss/registry - Agent Operations
+ * @antfarm/registry - Agent Operations
  * CRUD operations for agent entities
  */
 

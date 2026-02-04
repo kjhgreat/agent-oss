@@ -3,8 +3,8 @@
  */
 
 import { readFile } from 'node:fs/promises';
-import { exportPublicKey, importPublicKey } from '@agent-oss/crypto';
-import { createDIDDocument, getWellKnownUrl, resolveDID } from '@agent-oss/did';
+import { exportPublicKey, importPublicKey } from '@antfarm/crypto';
+import { createDIDDocument, getWellKnownUrl, resolveDID } from '@antfarm/did';
 import { Command } from 'commander';
 import ora from 'ora';
 import { loadConfig, resolvePath } from '../config.js';
@@ -25,12 +25,12 @@ export function createDidCommand(): Command {
 
         if (!config.did) {
           spinner.fail('No DID configured');
-          exitWithError('Run "agent-oss init" first');
+          exitWithError('Run "antfarm init" first');
         }
 
         if (!config.publicKeyPath) {
           spinner.fail('No public key configured');
-          exitWithError('Run "agent-oss init" first');
+          exitWithError('Run "antfarm init" first');
         }
 
         spinner.text = 'Reading public key...';

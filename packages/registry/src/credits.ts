@@ -1,5 +1,5 @@
 /**
- * @agent-oss/registry - Credit System Operations
+ * @antfarm/registry - Credit System Operations
  * Operations for managing agent credits and ledger
  */
 

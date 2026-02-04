@@ -1,5 +1,5 @@
 /**
- * @agent-oss/did
+ * @antfarm/did
  *
  * Decentralized Identifier (DID) implementation for agent identity.
  * Implements did:web method with Ed25519 keys.

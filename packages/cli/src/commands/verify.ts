@@ -3,9 +3,9 @@
  */
 
 import { readFile } from 'node:fs/promises';
-import { verifySignature } from '@agent-oss/crypto';
-import { extractPublicKey } from '@agent-oss/did';
-import { resolveDID } from '@agent-oss/did';
+import { verifySignature } from '@antfarm/crypto';
+import { extractPublicKey } from '@antfarm/did';
+import { resolveDID } from '@antfarm/did';
 import { Command } from 'commander';
 import ora from 'ora';
 import { error, exitWithError, keyValue, readFileBytes, success, warning } from '../utils.js';
@@ -52,7 +52,7 @@ export function createVerifyCommand(): Command {
 
         // Verify signature (need to convert signature from base64url to bytes)
         spinner.text = 'Verifying signature...';
-        const { base64urlToBytes } = await import('@agent-oss/did');
+        const { base64urlToBytes } = await import('@antfarm/did');
         const signatureBytes = base64urlToBytes(signature);
         const isValid = await verifySignature(data, signatureBytes, publicKey);
 

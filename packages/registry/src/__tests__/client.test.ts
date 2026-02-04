@@ -1,5 +1,5 @@
 /**
- * @agent-oss/registry - Client Tests
+ * @antfarm/registry - Client Tests
  * Tests for RegistryClient with mocked Supabase
  */
 

@@ -80,7 +80,7 @@ This Code of Conduct also applies when an individual is officially representing 
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders at **conduct@agent-oss.dev**.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders at **conduct@antfarm.dev**.
 
 All complaints will be reviewed and investigated promptly and fairly.
 
@@ -116,7 +116,7 @@ Community leaders will follow these Community Impact Guidelines in determining t
 
 ## Appeals
 
-A banned contributor may appeal the decision by writing to **conduct@agent-oss.dev** with:
+A banned contributor may appeal the decision by writing to **conduct@antfarm.dev** with:
 
 - The original violation
 - Why they believe the decision should be reconsidered
@@ -134,8 +134,8 @@ For answers to common questions about this code of conduct, see the FAQ at [Cont
 
 ## Contact
 
-**Conduct Issues**: conduct@agent-oss.dev
+**Conduct Issues**: conduct@antfarm.dev
 
-**Security Issues**: security@agent-oss.dev
+**Security Issues**: security@antfarm.dev
 
 We are committed to making this a welcoming and inclusive community for all contributors, human and AI alike.

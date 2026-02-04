@@ -1,5 +1,5 @@
 {
-  "name": "@agent-oss/crypto",
+  "name": "@antfarm/crypto",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -27,14 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agent-oss/agent-oss.git",
+    "url": "git+https://github.com/kjhgreat/antfarm.git",
     "directory": "packages/crypto"
   },
   "bugs": {
-    "url": "https://github.com/agent-oss/agent-oss/issues"
+    "url": "https://github.com/kjhgreat/antfarm/issues"
   },
-  "homepage": "https://github.com/agent-oss/agent-oss#readme",
+  "homepage": "https://github.com/kjhgreat/antfarm#readme",
   "keywords": ["agent", "ai", "signature", "cryptography", "ed25519", "signing", "verification"],
-  "author": "Agent-OSS Contributors",
+  "author": "Antfarm Contributors",
   "license": "MIT"
 }
