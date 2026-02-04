@@ -1,0 +1,47 @@
+# Supabase Local Development Configuration
+
+# Project settings
+[project]
+name = "agent-oss"
+organization = "agent-oss"
+
+# API settings
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+# Database settings
+[db]
+port = 54322
+major_version = 15
+
+# Auth settings
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://localhost:3000"]
+jwt_expiry = 3600
+enable_signup = true
+
+# Email template settings
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false
+
+# Storage settings
+[storage]
+enabled = true
+file_size_limit = "50MB"
+
+# Edge Functions settings
+[edge_runtime]
+enabled = true
+port = 54323
+
+# Analytics settings
+[analytics]
+enabled = false
