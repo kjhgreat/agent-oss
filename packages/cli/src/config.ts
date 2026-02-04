@@ -1,5 +1,5 @@
 /**
- * Configuration file management for agent-oss CLI
+ * Configuration file management for antfarm CLI
  */
 
 import { existsSync } from 'node:fs';
